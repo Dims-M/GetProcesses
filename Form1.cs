@@ -9,8 +9,10 @@ using System.Windows.Forms;
 
 namespace GetProcesses
 {
+
     public partial class Form1 : Form
     {
+
         public Form1()
         {
             InitializeComponent();
@@ -38,9 +40,9 @@ namespace GetProcesses
         {
             Bl bl = new Bl();
 
-            dataGridView1.DataSource = null;
+            clientTable.DataSource = null;
            // dataGridView1.DataSource = transList;
-            dataGridView1.DataSource = bl.getCompProcesse();
+            clientTable.DataSource = bl.getCompProcesse();
         }
 
         //кнопка закрыть процесс
