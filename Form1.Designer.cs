@@ -90,6 +90,7 @@
             this.clientTable.RowTemplate.Height = 24;
             this.clientTable.Size = new System.Drawing.Size(535, 227);
             this.clientTable.TabIndex = 0;
+            this.clientTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.clientTable_CellContentClick);
             this.clientTable.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.clientTable_CellDoubleClick);
             // 
             // tabPage2

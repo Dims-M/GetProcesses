@@ -43,7 +43,8 @@ namespace GetProcesses
             clientTable.DataSource = null;
             // dataGridView1.DataSource = transList;
             clientTable.DataSource = bl.getCompProcesse();
-           // tempListGetProcess.Add(bl.getCompProcesse().ToString());
+            tempListGetProcess = bl.getCompProcesse();
+            // tempListGetProcess.Add(bl.getCompProcesse().ToString());
             bl.WrateText(bl.getCompProcesse().ToString());
         }
 
@@ -103,9 +104,26 @@ namespace GetProcesses
         //Событие 2й клик по таблице с процессами
         private void clientTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            Bl bl = new Bl();
             var temp = e.RowIndex;
+
             label4.Text = temp.ToString();
-          //  e.RowIndex
+            MessageBox.Show($"Будет удален этот элемент!!{temp}");
+
+           // string temppp =  tempListGetProcess.  Count(temp);
+           //  label4.Text = temppp;
+
+            bl.KillProssec(Convert.ToInt32(temp));
+            //  e.RowIndex
+        }
+
+
+
+
+
+        private void clientTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
