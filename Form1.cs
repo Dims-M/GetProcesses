@@ -41,7 +41,7 @@ namespace GetProcesses
             Bl bl = new Bl();
 
             clientTable.DataSource = null;
-           // dataGridView1.DataSource = transList;
+            // dataGridView1.DataSource = transList;
             clientTable.DataSource = bl.getCompProcesse();
            // tempListGetProcess.Add(bl.getCompProcesse().ToString());
             bl.WrateText(bl.getCompProcesse().ToString());

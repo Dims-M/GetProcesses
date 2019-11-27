@@ -30,7 +30,7 @@ namespace GetProcesses
 
             foreach (var instance in processes)
             {
-                transport = new Transport(instance.Id.ToString(), instance.ProcessName.ToString());
+                transport = new Transport(instance.Id.ToString(), instance.ProcessName.ToString() );
 
                 // transList.Add(instance.ProcessName);
                 // listBox1.Items.Add(instance.ProcessName);
