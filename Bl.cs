@@ -54,6 +54,19 @@ namespace GetProcesses
 
         }
 
+        public void KillProssec(int nameProssec)
+        {
+            try
+            {
+                System.Diagnostics.Process.GetProcessById(nameProssec).Kill(); // GetProcessesByName(nameProssec)[0].Kill();
+            }
+            catch (Exception ex)
+            {
+                WrateText(" Ошибка при закрытии процесса" + ex);
+            }
+
+        }
+
 
         /// <summary>
         /// Запись в автозагрузку

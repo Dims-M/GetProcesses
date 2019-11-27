@@ -44,11 +44,15 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clientTable)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -86,10 +90,13 @@
             this.clientTable.RowTemplate.Height = 24;
             this.clientTable.Size = new System.Drawing.Size(535, 227);
             this.clientTable.TabIndex = 0;
+            this.clientTable.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.clientTable_CellDoubleClick);
             // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.tabPage2.Controls.Add(this.numericUpDown2);
+            this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.button4);
             this.tabPage2.Controls.Add(this.checkBox1);
             this.tabPage2.Controls.Add(this.label3);
@@ -107,9 +114,9 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(314, 21);
+            this.button4.Location = new System.Drawing.Point(277, 27);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(152, 34);
+            this.button4.Size = new System.Drawing.Size(152, 68);
             this.button4.TabIndex = 4;
             this.button4.Text = "Закрыть процесс";
             this.button4.UseVisualStyleBackColor = true;
@@ -120,7 +127,7 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(24, 123);
+            this.checkBox1.Location = new System.Drawing.Point(24, 134);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(15, 14);
             this.checkBox1.TabIndex = 6;
@@ -130,7 +137,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(21, 102);
+            this.label3.Location = new System.Drawing.Point(21, 109);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(183, 13);
             this.label3.TabIndex = 5;
@@ -234,10 +241,41 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(209, 21);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "label4";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(18, 59);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(205, 13);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "ID процесса которое нужно закрывать";
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Location = new System.Drawing.Point(24, 75);
+            this.numericUpDown2.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(230, 20);
+            this.numericUpDown2.TabIndex = 8;
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(575, 401);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -254,7 +292,9 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -276,6 +316,9 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TabPage tabPage3;
         public System.Windows.Forms.DataGridView clientTable;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
     }
 }
 

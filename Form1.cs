@@ -12,7 +12,7 @@ namespace GetProcesses
 
     public partial class Form1 : Form
     {
-
+        private List<string> tempListGetProcess{get; set;}
         public Form1()
         {
             InitializeComponent();
@@ -43,6 +43,8 @@ namespace GetProcesses
             clientTable.DataSource = null;
            // dataGridView1.DataSource = transList;
             clientTable.DataSource = bl.getCompProcesse();
+           // tempListGetProcess.Add(bl.getCompProcesse().ToString());
+            bl.WrateText(bl.getCompProcesse().ToString());
         }
 
         //кнопка закрыть процесс
@@ -60,6 +62,15 @@ namespace GetProcesses
         private void Button4_Click(object sender, EventArgs e)
         {
             Bl bl = new Bl();
+
+            if (numericUpDown2.Value>0)
+            {
+                bl.KillProssec(Convert.ToInt32(numericUpDown2.Value));
+            }
+            if (textBox1.Text!=null)
+            {
+                bl.KillProssec(textBox1.Text.ToString());
+            }
             bl.KillProssec(textBox1.Text.ToString());
         }
 
@@ -87,6 +98,14 @@ namespace GetProcesses
                // MessageBox.Show("Запуск в скрытом режиме Отключен!");
                
             }
+        }
+
+        //Событие 2й клик по таблице с процессами
+        private void clientTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var temp = e.RowIndex;
+            label4.Text = temp.ToString();
+          //  e.RowIndex
         }
     }
 }
