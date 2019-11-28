@@ -52,6 +52,8 @@
             this.textBoxProcess = new System.Windows.Forms.TextBox();
             this.button5 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clientTable)).BeginInit();
@@ -282,6 +284,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Silver;
+            this.panel1.Controls.Add(this.button6);
+            this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.textBoxProcess);
@@ -312,7 +316,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(24, 188);
+            this.button5.Location = new System.Drawing.Point(15, 156);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(112, 23);
             this.button5.TabIndex = 2;
@@ -322,11 +326,29 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 172);
+            this.label7.Location = new System.Drawing.Point(12, 140);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(145, 13);
             this.label7.TabIndex = 3;
             this.label7.Text = "Добавить в черный список";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(12, 182);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(160, 13);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "Исключить из черного списка";
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(15, 201);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(112, 23);
+            this.button6.TabIndex = 5;
+            this.button6.Text = "Исключить";
+            this.button6.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -383,6 +405,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Label label8;
     }
 }
 
