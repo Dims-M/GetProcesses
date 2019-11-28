@@ -43,7 +43,7 @@ namespace GetProcesses
             clientTable.DataSource = null;
             // dataGridView1.DataSource = transList;
             clientTable.DataSource = bl.getCompProcesse();
-            tempListGetProcess = bl.getCompProcesse();
+           // tempListGetProcess = bl.getCompProcesse();
             // tempListGetProcess.Add(bl.getCompProcesse().ToString());
             bl.WrateText(bl.getCompProcesse().ToString());
         }
@@ -101,23 +101,129 @@ namespace GetProcesses
             }
         }
 
-        //Событие 2й клик по таблице с процессами
-        private void clientTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        ////Событие 2й клик по таблице с процессами
+        //private void clientTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    //  Bl bl = new Bl();
+
+        //    int temp = e.RowIndex;
+
+        //    Int32 selectedRowCount =
+        //    clientTable.Rows.GetRowCount(DataGridViewElementStates.Selected);
+
+        //    label4.Text = temp.ToString();
+
+        //    var t = clientTable.Rows[temp]; // получили индек в датагрид
+        //    var ttt = t.Index; // интовы индекс
+
+        //    //for (int i = 0; i < tempListGetProcess.Count; i++)
+
+        //    //    if (tempListGetProcess[i] == 1)
+        //    //        // обрабатывай данные строки
+
+        //    // // var rrr = clientTable.SelectedRows;
+
+        //    //  /  clientTable.in
+
+
+        //            MessageBox.Show($"Будет удален этот элемент!!{temp}");
+
+        //    // string temppp =  tempListGetProcess.  Count(temp);
+        //    label4.Text = selectedRowCount.ToString();
+
+        //    // bl.KillProssec(Convert.ToInt32(temp));
+        //    //  e.RowIndex
+        
+        //}
+
+        private void clientTable_CellDoubleClick(object sender, System.EventArgs e)
         {
-            Bl bl = new Bl();
-            var temp = e.RowIndex;
 
-            label4.Text = temp.ToString();
-            MessageBox.Show($"Будет удален этот элемент!!{temp}");
+            #region Тест 1
+            //Int32 selectedCellCount =
+            //    clientTable.GetCellCount(DataGridViewElementStates.Selected);
+            //if (selectedCellCount > 0)
+            //{
+            //    if (clientTable.AreAllCellsSelected(true))
+            //    {
+            //        MessageBox.Show("All cells are selected", "Selected Cells");
+            //    }
+            //    else
+            //    {
+            //        System.Text.StringBuilder sb =
+            //            new System.Text.StringBuilder();
 
-           // string temppp =  tempListGetProcess.  Count(temp);
-           //  label4.Text = temppp;
+            //        for (int i = 0;
+            //            i < selectedCellCount; i++)
+            //        {
+            //            sb.Append("Row: ");
+            //            sb.Append(clientTable.SelectedCells[i].RowIndex
+            //                .ToString());
+            //            sb.Append(", Column: ");
+            //            sb.Append(clientTable.SelectedCells[i].ColumnIndex
+            //                .ToString());
+            //            sb.Append(Environment.NewLine);
+            //        }
 
-            bl.KillProssec(Convert.ToInt32(temp));
-            //  e.RowIndex
-        }
+            //        sb.Append("Total: " + selectedCellCount.ToString());
+            //        MessageBox.Show(sb.ToString(), "Selected Cells");
+            //    }
+            //}
+
+            #endregion
+
+            #region не раб 
+            //    Int32 selectedRowCount =
+            //clientTable.Rows.GetRowCount(DataGridViewElementStates.Selected);
+            //    if (selectedRowCount > 0)
+            //    {
+            //        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+
+            //        for (int i = 0; i < selectedRowCount; i++)
+            //        {
+            //            sb.Append("Row: ");
+            //            sb.Append(clientTable.SelectedRows[i].Index.ToString());
+            //            sb.Append(Environment.NewLine);
+            //        }
+
+            //        sb.Append("Total: " + selectedRowCount.ToString());
+            //        MessageBox.Show(sb.ToString(), "Selected Rows");
+            //    }
+
+            #endregion
 
 
+            Int32 selectedCellCount =
+        clientTable.GetCellCount(DataGridViewElementStates.Selected);
+            if (selectedCellCount > 0)
+            {
+                if (clientTable.AreAllCellsSelected(true))
+                {
+                    MessageBox.Show("НЕт Выбраны строки", "111");
+                }
+                else
+                {
+                    System.Text.StringBuilder sb =
+                        new System.Text.StringBuilder();
+
+                    for (int i = 0;
+                        i < selectedCellCount; i++)
+                    {
+                        sb.Append("Row: ");
+                        sb.Append(clientTable.SelectedCells[i].RowIndex
+                            .ToString());
+                        //sb.Append(", Column: ");
+                        //sb.Append(dataGridView1.SelectedCells[i].ColumnIndex
+                        //    .ToString());
+                        //sb.Append(Environment.NewLine);
+                    }
+
+                    sb.Append("Total: " + selectedCellCount.ToString());
+                    MessageBox.Show(sb.ToString(), "Selected Cells");
+                }
+
+
+            }
 
 
 
@@ -125,5 +231,7 @@ namespace GetProcesses
         {
 
         }
+
+
     }
 }

@@ -54,11 +54,15 @@ namespace GetProcesses
 
         }
 
-        public void KillProssec(int nameProssec)
+        /// <summary>
+        /// Закрытие процесса по id
+        /// </summary>
+        /// <param name="idProssec"></param>
+        public void KillProssec(int idProssec)
         {
             try
             {
-                System.Diagnostics.Process.GetProcessById(nameProssec).Kill(); // GetProcessesByName(nameProssec)[0].Kill();
+                System.Diagnostics.Process.GetProcessById(idProssec).Kill(); // GetProcessesByName(nameProssec)[0].Kill();
             }
             catch (Exception ex)
             {
