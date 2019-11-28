@@ -233,7 +233,7 @@ namespace GetProcesses
 
             //label4.Text = temp.ToString();
 
-            var ffff = clientTable.Rows.SharedRow(temp);
+           // var ffff = clientTable.Rows.SharedRow(temp);
 
             int counList = clientTable.RowCount; // получаем все значения 
                                                  // var t = clientTable.Rows[temp]; // получили индек в датагрид
@@ -262,9 +262,10 @@ namespace GetProcesses
             // if (tempListGetProcess.F == 1)
             // обрабатывай данные строки
 
-            label4.Text = ggggg.ToString();
+            label4.Text = $"{ggggg.ToString()} из {counList} процессов";
 
             bl.KillProssec(ggggg); // Закрытие процесса по имени
+            bl.WrateText($"Завершенн процесс по именни.{ggggg}");
         }
 
 
