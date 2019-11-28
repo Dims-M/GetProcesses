@@ -53,13 +53,18 @@ namespace GetProcesses
         {
             Bl bl = new Bl();
           //  bl.InitDirAndFile();
-            bl.DeleteMyFail();
+          //  bl.DeleteMyFail();
             // bl.GetFailSite(); //загрузка с файла
             // bl.KillProssec(string ff = dataGridView1.Rows);
             // bl.InitDirAndFile(); // создание временной директории
             // bl.ZipArhivMyPath(@"C:\Users\Dim\Documents\Test\GetProcesses.zip", @"C:\Users\Dim\Documents\Test\");
         }
 
+        /// <summary>
+        /// Кнопка закрытия процесса по id и им6ни
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button4_Click(object sender, EventArgs e)
         {
             Bl bl = new Bl();
@@ -101,41 +106,11 @@ namespace GetProcesses
             }
         }
 
-        ////Событие 2й клик по таблице с процессами
-        //private void clientTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    //  Bl bl = new Bl();
-
-        //    int temp = e.RowIndex;
-
-        //    Int32 selectedRowCount =
-        //    clientTable.Rows.GetRowCount(DataGridViewElementStates.Selected);
-
-        //    label4.Text = temp.ToString();
-
-        //    var t = clientTable.Rows[temp]; // получили индек в датагрид
-        //    var ttt = t.Index; // интовы индекс
-
-        //    //for (int i = 0; i < tempListGetProcess.Count; i++)
-
-        //    //    if (tempListGetProcess[i] == 1)
-        //    //        // обрабатывай данные строки
-
-        //    // // var rrr = clientTable.SelectedRows;
-
-        //    //  /  clientTable.in
-
-
-        //            MessageBox.Show($"Будет удален этот элемент!!{temp}");
-
-        //    // string temppp =  tempListGetProcess.  Count(temp);
-        //    label4.Text = selectedRowCount.ToString();
-
-        //    // bl.KillProssec(Convert.ToInt32(temp));
-        //    //  e.RowIndex
-
-        //}
-
+       /// <summary>
+       /// Событие при двойном клике на сстроку с процессами
+       /// </summary>
+       /// <param name="sender"></param>
+       /// <param name="e"></param>
         private void clientTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             Bl bl = new Bl();
