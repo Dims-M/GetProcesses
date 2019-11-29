@@ -28,8 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.button6 = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
+            this.textBoxProcess = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.clientTable = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
@@ -47,20 +55,13 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBoxProcess = new System.Windows.Forms.TextBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clientTable)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -80,12 +81,81 @@
             this.tabPage1.BackColor = System.Drawing.Color.DarkKhaki;
             this.tabPage1.Controls.Add(this.panel1);
             this.tabPage1.Controls.Add(this.clientTable);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(543, 233);
+            this.tabPage1.Size = new System.Drawing.Size(543, 230);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Активные процессы";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Silver;
+            this.panel1.Controls.Add(this.button6);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.button5);
+            this.panel1.Controls.Add(this.textBoxProcess);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1.Location = new System.Drawing.Point(325, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(215, 224);
+            this.panel1.TabIndex = 1;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(15, 201);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(112, 23);
+            this.button6.TabIndex = 5;
+            this.button6.Text = "Исключить";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(12, 182);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(205, 17);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "Исключить из черного списка";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(12, 140);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(186, 17);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "Добавить в черный список";
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(15, 156);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(112, 23);
+            this.button5.TabIndex = 2;
+            this.button5.Text = "Добавить";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // textBoxProcess
+            // 
+            this.textBoxProcess.Location = new System.Drawing.Point(3, 25);
+            this.textBoxProcess.Multiline = true;
+            this.textBoxProcess.Name = "textBoxProcess";
+            this.textBoxProcess.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxProcess.Size = new System.Drawing.Size(154, 97);
+            this.textBoxProcess.TabIndex = 1;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 9);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(140, 17);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Описание процесса";
             // 
             // clientTable
             // 
@@ -97,7 +167,7 @@
             this.clientTable.ReadOnly = true;
             this.clientTable.RowHeadersWidth = 51;
             this.clientTable.RowTemplate.Height = 24;
-            this.clientTable.Size = new System.Drawing.Size(319, 227);
+            this.clientTable.Size = new System.Drawing.Size(319, 224);
             this.clientTable.TabIndex = 0;
             this.clientTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.clientTable_CellContentClick);
             this.clientTable.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.clientTable_CellDoubleClick);
@@ -115,10 +185,10 @@
             this.tabPage2.Controls.Add(this.label1);
             this.tabPage2.Controls.Add(this.numericUpDown1);
             this.tabPage2.Controls.Add(this.buttonSaveSettings);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(543, 233);
+            this.tabPage2.Size = new System.Drawing.Size(543, 230);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Настройки закрытия процессов";
             // 
@@ -131,7 +201,7 @@
             0,
             0});
             this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(230, 20);
+            this.numericUpDown2.Size = new System.Drawing.Size(230, 22);
             this.numericUpDown2.TabIndex = 8;
             // 
             // label5
@@ -139,7 +209,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(18, 59);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(205, 13);
+            this.label5.Size = new System.Drawing.Size(262, 17);
             this.label5.TabIndex = 7;
             this.label5.Text = "ID процесса которое нужно закрывать";
             // 
@@ -160,7 +230,7 @@
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1.Location = new System.Drawing.Point(24, 134);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(15, 14);
+            this.checkBox1.Size = new System.Drawing.Size(18, 17);
             this.checkBox1.TabIndex = 6;
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
@@ -170,7 +240,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(21, 109);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(183, 13);
+            this.label3.Size = new System.Drawing.Size(233, 17);
             this.label3.TabIndex = 5;
             this.label3.Text = "Автозагрузка при старте системы";
             // 
@@ -179,7 +249,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(21, 7);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(216, 13);
+            this.label2.Size = new System.Drawing.Size(276, 17);
             this.label2.TabIndex = 4;
             this.label2.Text = "Имя процесса которое нужно закрывать";
             // 
@@ -187,7 +257,7 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(21, 27);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(233, 20);
+            this.textBox1.Size = new System.Drawing.Size(233, 22);
             this.textBox1.TabIndex = 3;
             // 
             // label1
@@ -195,7 +265,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(18, 163);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(255, 13);
+            this.label1.Size = new System.Drawing.Size(325, 17);
             this.label1.TabIndex = 2;
             this.label1.Text = "Через сколько закрывать программу  (Минутах)";
             // 
@@ -213,7 +283,7 @@
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 22);
             this.numericUpDown1.TabIndex = 1;
             this.numericUpDown1.Value = new decimal(new int[] {
             5,
@@ -233,10 +303,10 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(491, 233);
+            this.tabPage3.Size = new System.Drawing.Size(543, 230);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Автозапуск нужных приложений";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -244,9 +314,9 @@
             // button1
             // 
             this.button1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.button1.Location = new System.Drawing.Point(0, 337);
+            this.button1.Location = new System.Drawing.Point(0, 329);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(575, 64);
+            this.button1.Size = new System.Drawing.Size(573, 64);
             this.button1.TabIndex = 1;
             this.button1.Text = "Выход";
             this.button1.UseVisualStyleBackColor = true;
@@ -277,88 +347,20 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(209, 21);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.Size = new System.Drawing.Size(46, 17);
             this.label4.TabIndex = 4;
             this.label4.Text = "label4";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Silver;
-            this.panel1.Controls.Add(this.button6);
-            this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.textBoxProcess);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(325, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(215, 227);
-            this.panel1.TabIndex = 1;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 9);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(108, 13);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Описание процесса";
-            // 
-            // textBoxProcess
-            // 
-            this.textBoxProcess.Location = new System.Drawing.Point(3, 25);
-            this.textBoxProcess.Multiline = true;
-            this.textBoxProcess.Name = "textBoxProcess";
-            this.textBoxProcess.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxProcess.Size = new System.Drawing.Size(154, 97);
-            this.textBoxProcess.TabIndex = 1;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(15, 156);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(112, 23);
-            this.button5.TabIndex = 2;
-            this.button5.Text = "Добавить";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 140);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(145, 13);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "Добавить в черный список";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 182);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(160, 13);
-            this.label8.TabIndex = 4;
-            this.label8.Text = "Исключить из черного списка";
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(15, 201);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(112, 23);
-            this.button6.TabIndex = 5;
-            this.button6.Text = "Исключить";
-            this.button6.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(575, 401);
+            this.ClientSize = new System.Drawing.Size(573, 393);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tabControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(591, 440);
             this.MinimumSize = new System.Drawing.Size(591, 440);
@@ -367,13 +369,13 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clientTable)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

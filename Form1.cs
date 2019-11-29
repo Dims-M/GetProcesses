@@ -203,39 +203,12 @@ namespace GetProcesses
 
             int temp = e.RowIndex;
             string ggggg ="Незаполнено";
-              Int32 selectedRowCount =
-               clientTable.Rows.GetRowCount(DataGridViewElementStates.Selected);
+             Int32 selectedRowCount =
+             clientTable.Rows.GetRowCount(DataGridViewElementStates.Selected);
 
-            //label4.Text = temp.ToString();
-
-           // var ffff = clientTable.Rows.SharedRow(temp);
-
-            int counList = clientTable.RowCount; // получаем все значения 
-                                                 // var t = clientTable.Rows[temp]; // получили индек в датагрид
-                                                 // var ttt = t.Index; // интовы индекс
-
-            // for (int i = 0; i < counList; i++)
-            //{
-            //ggggg = clientTable.Rows[temp].Cells[temp].Value.ToString(); // работает 1раз
-            // ggggg = clientTable.CurrentRow.Cells.ToString(); // CurrentCell.ToString();
-            // this.clientTable.FirstDisplayedCell = this.clientTable.CurrentCell;
-            // ggggg = clientTable.FirstDisplayedCell.ToString();
-            //}
+            int counList = clientTable.RowCount; 
 
             ggggg = clientTable.Rows[temp].Cells["ProcessName"].Value.ToString();
-
-            //DataGridViewRow startingBalanceRow = clientTable.Rows[temp];
-            //if (clientTable.SelectedRows.Contains(startingBalanceRow))
-            //{
-            //    // Do not allow the user to delete the Starting Balance row.
-            //    MessageBox.Show("FJFJFJFJFJFJFJ");
-
-            //    // Cancel the deletion if the Starting Balance row is included.
-            //   // e.Cancel = true;
-            //}
-
-            // if (tempListGetProcess.F == 1)
-            // обрабатывай данные строки
 
             label4.Text = $"{ggggg.ToString()} из {counList} процессов";
 
