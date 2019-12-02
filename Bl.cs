@@ -35,7 +35,7 @@ namespace GetProcesses
 
             foreach (var instance in processes)
             {
-                transport = new Transport(instance.Id.ToString(), instance.ProcessName.ToString() );
+                transport = new Transport(instance.Id.ToString(), instance.ProcessName.ToString(), instance.StartInfo.ToString() );
 
                 // transList.Add(instance.ProcessName);
                 // listBox1.Items.Add(instance.ProcessName);
@@ -339,15 +339,17 @@ namespace GetProcesses
     {
         public string ID { set; get; }
         public string ProcessName { set; get; }
-        //public string DateDeparture { set; get; }
+        public string OpisanieProgressa { set; get; }
         //public string DateDestination { set; get; }
         //public double Price { set; get; }
 
        // public Transport(string cityDeparture, string cityDestination, string dateDeparture, string dateDestination, double price)
-        public Transport(string cityDeparture, string cityDestination)
+        public Transport(string _id, string _processName, string _opisanieProgressa)
         {
-            this.ID = cityDeparture;
-            this.ProcessName = cityDestination;
+            this.ID = _id;
+            this.ProcessName = _processName;
+
+            OpisanieProgressa = _opisanieProgressa;
             //this.DateDeparture = dateDeparture;
             //this.DateDestination = dateDestination;
             //this.Price = price;

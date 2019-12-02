@@ -12,7 +12,7 @@ namespace GetProcesses
 
     public partial class Form1 : Form
     {
-        private List<string> tempListGetProcess{get; set;}
+        private List<Transport> tempListGetProcess{get; set;}
         public Form1()
         {
             InitializeComponent();
@@ -43,9 +43,10 @@ namespace GetProcesses
             clientTable.DataSource = null;
             // dataGridView1.DataSource = transList;
             clientTable.DataSource = bl.getCompProcesse();
-           // tempListGetProcess = bl.getCompProcesse();
+            tempListGetProcess = bl.getCompProcesse();
+            // tempListGetProcess = bl.getCompProcesse();
             // tempListGetProcess.Add(bl.getCompProcesse().ToString());
-            bl.WrateText(bl.getCompProcesse().ToString());
+            bl.WrateText(bl.getCompProcesse().ToString()); // получение обьекта прошивки
         }
 
         //кнопка закрыть процесс
@@ -107,7 +108,7 @@ namespace GetProcesses
         }
 
        /// <summary>
-       /// Событие при двойном клике на сстроку с процессами
+       /// Событие при двойном клике на строку с процессами
        /// </summary>
        /// <param name="sender"></param>
        /// <param name="e"></param>
@@ -209,8 +210,18 @@ namespace GetProcesses
             int counList = clientTable.RowCount; 
 
             ggggg = clientTable.Rows[temp].Cells["ProcessName"].Value.ToString();
+            string iddd = clientTable.Rows[temp].Cells["Id"].Value.ToString(); 
 
             label4.Text = $"{ggggg.ToString()} из {counList} процессов";
+
+            Transport transport = new Transport();
+            transport = tempListGetProcess.Find(item => item.ID== iddd); //
+
+            // var tempp = tempListGetProcess.IndexOf(x => x.ID == iddd); // 
+            // int tempp = (int)tempListGetProcess.Find(x=>x.); // 
+            // int tempp = tempListGetProcess.IndexOf(iddd);
+
+            textBoxProcess.Text = $"{transport.ID} и {transport.ProcessName}";
 
             bl.KillProssec(ggggg); // Закрытие процесса по имени
             bl.WrateText($"Завершенн процесс по именни.{ggggg}");
