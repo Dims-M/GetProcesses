@@ -17,6 +17,7 @@ namespace GetProcesses
         /// Основная папка программы
         /// </summary>
         private string myPachDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +@"\Test\";
+        private string myLogPachDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Test\GetProcessesLog\";
         private string myPachDirFileApp = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Test\GetProcesses\";
         private bool swechLink = true; // добавление ярлыка в автозагрузку
         private string linkAppPath = Environment.GetFolderPath(Environment.SpecialFolder.Startup)+ @"\GetProcesses.lnk";
@@ -140,6 +141,8 @@ namespace GetProcesses
                 if (!dirInfo.Exists)
                 {
                     dirInfo.Create();// создание кaтолога
+                    Directory.CreateDirectory(myPachDir+"Log"); //создание папки лога
+                   // File.Create(myPachDir + @"Log\texLog.txt");
                 }
 
                 //Проверка откуда была запущена программа!!!
@@ -241,7 +244,8 @@ namespace GetProcesses
         public void WrateText(string myText)
         {
 
-            using (StreamWriter sw = new StreamWriter(myPachDir + @"texLog.txt", true, System.Text.Encoding.Default))
+            using (StreamWriter sw = new StreamWriter(myLogPachDir + @"texLog.txt", true, System.Text.Encoding.Default))
+           // using (StreamWriter sw = new StreamWriter(myPachDir + @"texLog.txt", true, System.Text.Encoding.Default))
             {
                 sw.WriteLine(DateTime.Now + "\t\n" + myText); // запись
 
@@ -255,7 +259,8 @@ namespace GetProcesses
         /// <param name="myText"></param>
         public void WrateTextTemp(string myText, string myPachDir)
         {
-            using (StreamWriter sw = new StreamWriter(myPachDir + @"texLog.txt", true, System.Text.Encoding.Default))
+           // using (StreamWriter sw = new StreamWriter(myLogPachDir + @"texLog.txt", true, System.Text.Encoding.Default))
+            using (StreamWriter sw = new StreamWriter(myLogPachDir + @"texLog.txt", true, System.Text.Encoding.Default))
             {
                 sw.WriteLine(DateTime.Now + "\t\n" + myText); // запись
 
