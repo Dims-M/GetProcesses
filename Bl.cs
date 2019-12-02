@@ -138,14 +138,14 @@ namespace GetProcesses
             string tempPahtFile = Application.StartupPath; // путь запуска текущего приложения. Application.StartupPath
             string tempPathDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Test\GetProcesses";
 
-            DirectoryInfo dirInfo = new DirectoryInfo(@"Log");
+            DirectoryInfo dirInfo = new DirectoryInfo(@"\Log");
             
             try
             {
                 if (!dirInfo.Exists)
                 {
                     dirInfo.Create();// создание кaтолога
-                  //  Directory.CreateDirectory("Log"); //создание папки лога
+                    Directory.CreateDirectory("Log"); //создание папки лога
                    // File.Create(myPachDir + @"Log\texLog.txt");
                 }
 
@@ -248,7 +248,7 @@ namespace GetProcesses
         /// <param name="myText"></param>
         public void WrateText(string myText)
         {
-            DirectoryInfo dirInfo = new DirectoryInfo("\\Log");
+            DirectoryInfo dirInfo = new DirectoryInfo(@"Log");
             try
             {
                 if (!dirInfo.Exists)
@@ -263,7 +263,7 @@ namespace GetProcesses
 
             }
 
-                using (StreamWriter sw = new StreamWriter(@"Log\\texLog.txt", true, System.Text.Encoding.Default))
+                using (StreamWriter sw = new StreamWriter(@"Log\Log.txt", true, System.Text.Encoding.Default))
 
            // using (StreamWriter sw = new StreamWriter(myPachDir + @"texLog.txt", true, System.Text.Encoding.Default))
             {
@@ -291,7 +291,7 @@ namespace GetProcesses
                 }
 
                 // using (StreamWriter sw = new StreamWriter(myLogPachDir + @"texLog.txt", true, System.Text.Encoding.Default))
-                using (StreamWriter sw = new StreamWriter(@"Log\\texLog.txt", true, System.Text.Encoding.Default))
+                using (StreamWriter sw = new StreamWriter(@"Log\Log.txt", true, System.Text.Encoding.Default))
                 {
                     sw.WriteLine(DateTime.Now + "\t\n" + myText); // запись
 
