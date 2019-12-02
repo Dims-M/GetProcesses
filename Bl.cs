@@ -35,7 +35,7 @@ namespace GetProcesses
 
             foreach (var instance in processes)
             {
-                transport = new Transport(instance.Id.ToString(), instance.ProcessName.ToString(), instance.StartInfo.ToString() );
+                transport = new Transport(instance.Id.ToString(), instance.ProcessName.ToString(), instance.MainWindowTitle.ToString() );
 
                 // transList.Add(instance.ProcessName);
                 // listBox1.Items.Add(instance.ProcessName);
@@ -50,6 +50,7 @@ namespace GetProcesses
         {
             try
             {
+                MessageBox.Show($"Процесс {nameProssec} будет закрыт") ;
                 System.Diagnostics.Process.GetProcessesByName(nameProssec)[0].Kill();
             }
             catch (Exception ex)
