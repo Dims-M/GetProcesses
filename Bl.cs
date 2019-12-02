@@ -22,6 +22,10 @@ namespace GetProcesses
         private bool swechLink = true; // добавление ярлыка в автозагрузку
         private string linkAppPath = Environment.GetFolderPath(Environment.SpecialFolder.Startup)+ @"\GetProcesses.lnk";
 
+        /// <summary>
+        /// Получение списка запущенных процессов
+        /// </summary>
+        /// <returns></returns>
         public List<Transport> getCompProcesse()
         {
             List<Transport> transList = new List<Transport>();
@@ -126,7 +130,7 @@ namespace GetProcesses
         }
 
         /// <summary>
-        /// Создание директории, временной папки
+        /// Создание директории, временной папки 
         /// </summary>
         public void InitDirAndFile()
         {
@@ -134,34 +138,34 @@ namespace GetProcesses
             string tempPahtFile = Application.StartupPath; // путь запуска текущего приложения. Application.StartupPath
             string tempPathDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Test\GetProcesses";
 
-            DirectoryInfo dirInfo = new DirectoryInfo(myPachDir);
+            DirectoryInfo dirInfo = new DirectoryInfo(@"Log");
             
             try
             {
                 if (!dirInfo.Exists)
                 {
                     dirInfo.Create();// создание кaтолога
-                    Directory.CreateDirectory(myPachDir+"Log"); //создание папки лога
+                  //  Directory.CreateDirectory("Log"); //создание папки лога
                    // File.Create(myPachDir + @"Log\texLog.txt");
                 }
 
                 //Проверка откуда была запущена программа!!!
-               if (tempPaht.Equals(tempPathDir) )
-                {
-                    MessageBox.Show("[ezct");
-                    WrateTextTemp($"Временный лог.\t\n Текущая версия программы запущена из = {tempPahtFile} А должна быть из {tempPathDir}", tempPaht + "\\");
-                    //GetFailSite();
-                }
+               //if (tempPaht.Equals(tempPathDir) )
+               // {
+               //     MessageBox.Show("[ezct");
+               //     WrateTextTemp($"Временный лог.\t\n Текущая версия программы запущена из = {tempPahtFile} А должна быть из {tempPathDir}", tempPaht + "\\");
+               //     //GetFailSite();
+               // }
 
-                else
-                {
+               // else
+               // {
 
-                WrateTextTemp($"Временный лог.\t\n Текущая версия программы запущена из = {tempPaht} А не из установочной пaпки{tempPathDir}", tempPaht + "\\");
-                GetFailSite(); //получение новой версии файла Работает
-                MessageBox.Show("Скачивание и копирование завершено!!!");
-                // CopyLinkAppStartup(true);//запись в автозагрузку
+               // WrateTextTemp($"Временный лог.\t\n Текущая версия программы запущена из = {tempPaht} А не из установочной пaпки{tempPathDir}", tempPaht + "\\");
+               // GetFailSite(); //получение новой версии файла Работает
+               // MessageBox.Show("Скачивание и копирование завершено!!!");
+               // // CopyLinkAppStartup(true);//запись в автозагрузку
 
-                }
+               // }
             }
 
             catch (Exception ex)
@@ -171,6 +175,7 @@ namespace GetProcesses
 
 
         }
+
 
         /// <summary>
         /// Получение новой версии файла ссайта 000webhostapp.com
@@ -243,8 +248,23 @@ namespace GetProcesses
         /// <param name="myText"></param>
         public void WrateText(string myText)
         {
+            DirectoryInfo dirInfo = new DirectoryInfo("\\Log");
+            try
+            {
+                if (!dirInfo.Exists)
+                {
+                    dirInfo.Create();// создание кaтолога
+                }
 
-            using (StreamWriter sw = new StreamWriter(myLogPachDir + @"texLog.txt", true, System.Text.Encoding.Default))
+            }
+
+            catch (Exception ex)
+            {
+
+            }
+
+                using (StreamWriter sw = new StreamWriter(@"Log\\texLog.txt", true, System.Text.Encoding.Default))
+
            // using (StreamWriter sw = new StreamWriter(myPachDir + @"texLog.txt", true, System.Text.Encoding.Default))
             {
                 sw.WriteLine(DateTime.Now + "\t\n" + myText); // запись
@@ -259,13 +279,30 @@ namespace GetProcesses
         /// <param name="myText"></param>
         public void WrateTextTemp(string myText, string myPachDir)
         {
-           // using (StreamWriter sw = new StreamWriter(myLogPachDir + @"texLog.txt", true, System.Text.Encoding.Default))
-            using (StreamWriter sw = new StreamWriter(myLogPachDir + @"texLog.txt", true, System.Text.Encoding.Default))
+            DirectoryInfo dirInfo = new DirectoryInfo("\\Log");
+
+            try
             {
-                sw.WriteLine(DateTime.Now + "\t\n" + myText); // запись
+                if (!dirInfo.Exists)
+                {
+                    dirInfo.Create();// создание кaтолога
+                    //Directory.CreateDirectory(myPachDir + "Log"); //создание папки лога
+                    // File.Create(myPachDir + @"Log\texLog.txt");
+                }
+
+                // using (StreamWriter sw = new StreamWriter(myLogPachDir + @"texLog.txt", true, System.Text.Encoding.Default))
+                using (StreamWriter sw = new StreamWriter(@"Log\\texLog.txt", true, System.Text.Encoding.Default))
+                {
+                    sw.WriteLine(DateTime.Now + "\t\n" + myText); // запись
+
+                }
 
             }
-        }
+            catch (Exception ex)
+            {
+
+            }
+         }
 
         public void IniBollCheckBox1(bool swichh)
         {

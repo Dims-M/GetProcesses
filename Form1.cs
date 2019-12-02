@@ -30,8 +30,8 @@ namespace GetProcesses
         private void Form1_Load(object sender, EventArgs e)
         {
             Bl bl = new Bl();
-            bl.InitDirAndFile();
-            bl.CopyLinkAppStartup(true);
+            bl.InitDirAndFile(); // создание и папок
+          // bl.CopyLinkAppStartup(true); // программное добавление в автозагрузку
 
 
         }
