@@ -36,7 +36,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
-            this.textBoxProcess = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.clientTable = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -95,27 +94,28 @@
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.textBoxProcess);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel1.Location = new System.Drawing.Point(325, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(215, 224);
             this.panel1.TabIndex = 1;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel1_Paint);
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(15, 201);
+            this.button6.Location = new System.Drawing.Point(15, 187);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(112, 23);
+            this.button6.Size = new System.Drawing.Size(112, 37);
             this.button6.TabIndex = 5;
             this.button6.Text = "Исключить";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.Button6_Click);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 182);
+            this.label8.Location = new System.Drawing.Point(10, 167);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(205, 17);
             this.label8.TabIndex = 4;
@@ -124,35 +124,27 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 140);
+            this.label7.Location = new System.Drawing.Point(12, 98);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(186, 17);
             this.label7.TabIndex = 3;
             this.label7.Text = "Добавить в черный список";
+            this.label7.Click += new System.EventHandler(this.Label7_Click);
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(15, 156);
+            this.button5.Location = new System.Drawing.Point(15, 118);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(112, 23);
+            this.button5.Size = new System.Drawing.Size(112, 34);
             this.button5.TabIndex = 2;
             this.button5.Text = "Добавить";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.Button5_Click);
             // 
-            // textBoxProcess
-            // 
-            this.textBoxProcess.Location = new System.Drawing.Point(3, 25);
-            this.textBoxProcess.Multiline = true;
-            this.textBoxProcess.Name = "textBoxProcess";
-            this.textBoxProcess.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxProcess.Size = new System.Drawing.Size(154, 97);
-            this.textBoxProcess.TabIndex = 1;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 9);
+            this.label6.Location = new System.Drawing.Point(30, 9);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(140, 17);
             this.label6.TabIndex = 0;
@@ -405,7 +397,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBoxProcess;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button5;

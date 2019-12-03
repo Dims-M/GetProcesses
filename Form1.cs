@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -225,7 +226,8 @@ namespace GetProcesses
             // int tempp = (int)tempListGetProcess.Find(x=>x.); // 
             // int tempp = tempListGetProcess.IndexOf(iddd);
 
-            textBoxProcess.Text = $"{transport.ID} и {transport.ProcessName}";
+           // textBoxProcess.Text = $"{transport.ID} и {transport.ProcessName}";
+
 
             bl.KillProssec(nameProcess); // Закрытие процесса по имени
             bl.WrateText($"Завершенн процесс по именни.{nameProcess}");
@@ -263,6 +265,46 @@ namespace GetProcesses
         private void ClientTable_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             nomerRow = e.RowIndex;
+        }
+
+        private void Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //исключить из "черного списка"
+        private void Button6_Click(object sender, EventArgs e)
+        {
+
+            //ArrayList Empty = new ArrayList();
+
+            clientTable.DataSource = null;
+            //  clientTable.DataSource = new object();
+            // clientTable.DataSource. Clear();
+
+            //int rowsCount = clientTable.Rows.Count;
+            //for (int i = 0; i < rowsCount; i++)
+            //{
+            //    clientTable.Rows.Remove(clientTable.Rows[i]);
+            //}
+
+            //  clientTable.ClearSelection(); //
+
+            //создаём и добавляем две колонки
+            clientTable.Columns.Add("ID", "Id");
+            clientTable.Columns.Add("Name", "Name");
+
+            // добавляем строку
+            int rowNumber = clientTable.Rows.Add();
+
+            //3. Заполняем ячейки
+            clientTable.Rows[rowNumber].Cells["ID"].Value = rowNumber;
+            clientTable.Rows[rowNumber].Cells[1].Value = "Тестттттт";
         }
     }
 }
