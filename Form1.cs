@@ -13,6 +13,8 @@ namespace GetProcesses
     public partial class Form1 : Form
     {
         private List<Transport> tempListGetProcess{get; set;}
+        private static int nomerRow;
+
         public Form1()
         {
             InitializeComponent();
@@ -31,6 +33,7 @@ namespace GetProcesses
         {
             Bl bl = new Bl();
             bl.InitDirAndFile(); // создание и папок
+            bl.getCompProcesse(); // получение списка запущеных процессов
           // bl.CopyLinkAppStartup(true); // программное добавление в автозагрузку
 
 
@@ -53,12 +56,13 @@ namespace GetProcesses
         private void Button3_Click(object sender, EventArgs e)
         {
             Bl bl = new Bl();
-          //  bl.InitDirAndFile();
-          //  bl.DeleteMyFail();
+            //  bl.InitDirAndFile();
+            //  bl.DeleteMyFail();
             // bl.GetFailSite(); //загрузка с файла
             // bl.KillProssec(string ff = dataGridView1.Rows);
             // bl.InitDirAndFile(); // создание временной директории
             // bl.ZipArhivMyPath(@"C:\Users\Dim\Documents\Test\GetProcesses.zip", @"C:\Users\Dim\Documents\Test\");
+            bl.ReadingList();
         }
 
         /// <summary>
@@ -202,20 +206,20 @@ namespace GetProcesses
 
             #endregion
 
-            int temp = e.RowIndex;
-            string ggggg ="Незаполнено";
+            nomerRow = e.RowIndex;
+            string nameProcess ="Незаполнено";
              Int32 selectedRowCount =
              clientTable.Rows.GetRowCount(DataGridViewElementStates.Selected);
 
             int counList = clientTable.RowCount; 
 
-            ggggg = clientTable.Rows[temp].Cells["ProcessName"].Value.ToString();
-            string iddd = clientTable.Rows[temp].Cells["Id"].Value.ToString(); 
+            nameProcess = clientTable.Rows[nomerRow].Cells["ProcessName"].Value.ToString();
+            string idProsecc = clientTable.Rows[nomerRow].Cells["Id"].Value.ToString(); 
 
-            label4.Text = $"{ggggg.ToString()} из {counList} процессов";
+            label4.Text = $"{nameProcess.ToString()} из {counList} процессов";
 
             Transport transport = new Transport();
-            transport = tempListGetProcess.Find(item => item.ID== iddd); //
+            transport = tempListGetProcess.Find(item => item.ID== idProsecc); //
 
             // var tempp = tempListGetProcess.IndexOf(x => x.ID == iddd); // 
             // int tempp = (int)tempListGetProcess.Find(x=>x.); // 
@@ -223,8 +227,9 @@ namespace GetProcesses
 
             textBoxProcess.Text = $"{transport.ID} и {transport.ProcessName}";
 
-            bl.KillProssec(ggggg); // Закрытие процесса по имени
-            bl.WrateText($"Завершенн процесс по именни.{ggggg}");
+            bl.KillProssec(nameProcess); // Закрытие процесса по имени
+            bl.WrateText($"Завершенн процесс по именни.{nameProcess}");
+
         }
 
 
@@ -234,6 +239,30 @@ namespace GetProcesses
 
         }
 
+        /// <summary>
+        /// Кнопка добавления в список закрытия
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button5_Click(object sender, EventArgs e)
+        {
+            Bl bl = new Bl();
+           //  nomerRow = e.RowIndex; // номер строки. На которой будет целчок мышки
 
+            string nameProcess = "";
+            Int32 selectedRowCount =
+            clientTable.Rows.GetRowCount(DataGridViewElementStates.Selected); // выбор строки в дате грид
+
+            nameProcess = clientTable.Rows[nomerRow].Cells["ProcessName"].Value.ToString();
+
+
+            bl.AddBlacListProcess(nameProcess);// запись имени нужного процесса
+        }
+
+        //Вызывается при щелчке на строку грида
+        private void ClientTable_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            nomerRow = e.RowIndex;
+        }
     }
 }

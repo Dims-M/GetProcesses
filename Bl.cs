@@ -22,6 +22,9 @@ namespace GetProcesses
         private bool swechLink = true; // добавление ярлыка в автозагрузку
         private string linkAppPath = Environment.GetFolderPath(Environment.SpecialFolder.Startup)+ @"\GetProcesses.lnk";
 
+        private static int countProcesse = 0;
+
+
         /// <summary>
         /// Получение списка запущенных процессов
         /// </summary>
@@ -31,7 +34,7 @@ namespace GetProcesses
             List<Transport> transList = new List<Transport>();
             Transport transport; // = new Transport((transList.Count + 1).ToString(), "fndfg", "fhjmfhj", "gk,ghj", 3.14);
             Process[] processes = Process.GetProcesses();
-             
+           // countProcesse = processes.Count();
 
             foreach (var instance in processes)
             {
@@ -41,6 +44,7 @@ namespace GetProcesses
                 // listBox1.Items.Add(instance.ProcessName);
                 transList.Add(transport);
             }
+            countProcesse = transList.Count;
            // transList.Add(transport);
             return transList;
         }
@@ -51,14 +55,68 @@ namespace GetProcesses
             try
             {
                 MessageBox.Show($"Процесс {nameProssec} будет закрыт") ;
-                System.Diagnostics.Process.GetProcessesByName(nameProssec)[0].Kill();
+
+                for (int i =0; i<= countProcesse; i++)
+                {
+
+                    System.Diagnostics.Process.GetProcessesByName(nameProssec)[0].Kill(); //не понятно как решить ошибку индекса
+                }
+
+               // System.Diagnostics.Process.GetProcessesByName(nameProssec)[0].Kill();
+                WrateTextTemp("Ошибка при закрытии процесса \n", @"Log\MyLogKillProssec.txt");
+
             }
             catch (Exception ex)
             {
-                WrateText(" Ошибка при закрытии процесса" + ex);
+                WrateText(" Ошибка при закрытии процесса\t\n" + ex);
             }
 
         }
+
+        /// <summary>
+        /// Добавление в черный список просессов по имени
+        /// </summary>
+        /// <param name="nameProssec"></param>
+        public void AddBlacListProcess(string nameProssec)
+        {
+            try
+            {
+                MessageBox.Show($"Процесс {nameProssec} будет добавлен в список закрываемых  при запуске программы процессов");
+
+                //System.Diagnostics.Process.GetProcessesByName(nameProssec)[0].Kill();
+
+                WrateTextTemp($"{nameProssec}", @"Log\MyLogKillProssec.txt"); ;
+            }
+            catch (Exception ex)
+            {
+                WrateText(" Ошибка при закрытии процесса\t\n" + ex);
+            }
+
+        }
+
+
+        public void ReadingList()
+        {
+            string tepmmMass = null;
+           
+           // MessageBox.Show("Будут завершены процессы из черного списка )))");
+
+            if (File.Exists(@"Log\MyLogKillProssec.txt"))
+            {
+                using (StreamReader sw = new StreamReader(@"Log\MyLogKillProssec.txt", System.Text.Encoding.Default))
+                {
+                    while ((tepmmMass = sw.ReadLine()) != null)  // построчно.
+                    {
+                        KillProssec(tepmmMass); // удаляем процесс
+                    }
+                }
+
+            }
+           else
+            WrateText("!!Ошибка при чтении файла блеклиста!!!\t\n");
+
+        }
+
 
         /// <summary>
         /// Закрытие процесса по id
@@ -291,10 +349,11 @@ namespace GetProcesses
                     // File.Create(myPachDir + @"Log\texLog.txt");
                 }
 
-                // using (StreamWriter sw = new StreamWriter(myLogPachDir + @"texLog.txt", true, System.Text.Encoding.Default))
-                using (StreamWriter sw = new StreamWriter(@"Log\Log.txt", true, System.Text.Encoding.Default))
+                 using (StreamWriter sw = new StreamWriter(myPachDir, true, System.Text.Encoding.Default))
+                //using (StreamWriter sw = new StreamWriter(@"Log\Log.txt", true, System.Text.Encoding.Default))
                 {
-                    sw.WriteLine(DateTime.Now + "\t\n" + myText); // запись
+                   // sw.WriteLine(DateTime.Now + "\t\n" + myText); // запись
+                    sw.WriteLine(myText); // запись
 
                 }
 

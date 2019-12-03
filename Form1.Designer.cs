@@ -138,6 +138,7 @@
             this.button5.TabIndex = 2;
             this.button5.Text = "Добавить";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.Button5_Click);
             // 
             // textBoxProcess
             // 
@@ -169,6 +170,7 @@
             this.clientTable.RowTemplate.Height = 24;
             this.clientTable.Size = new System.Drawing.Size(319, 224);
             this.clientTable.TabIndex = 0;
+            this.clientTable.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClientTable_CellClick);
             this.clientTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.clientTable_CellContentClick);
             this.clientTable.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.clientTable_CellDoubleClick);
             // 
