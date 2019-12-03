@@ -95,7 +95,9 @@ namespace GetProcesses
 
         }
 
-
+        /// <summary>
+        /// Чтение листа и сразу закрытие процесса из листа
+        /// </summary>
         public void ReadingList()
         {
             string tepmmMass = null;
@@ -111,10 +113,37 @@ namespace GetProcesses
                         KillProssec(tepmmMass); // удаляем процесс
                     }
                 }
+                AddBlacListProcess(tepmmMass); // запись в лист
 
             }
            else
             WrateText("!!Ошибка при чтении файла блеклиста!!!\t\n");
+
+        }
+
+
+        public void ReaderWhiteList(string nameProc)
+        {
+            string tempName = "";
+            if (File.Exists(@"Log\MyLogKillProssec.txt"))
+            {
+                using (StreamReader sw = new StreamReader(@"Log\MyLogKillProssec.txt", System.Text.Encoding.Default))
+                {
+                   // tempName = sw.
+                    while ((tempName = sw.ReadLine()) != null)  // построчно.
+                    {
+                        if (tempName.Contains(nameProc)) // ищем нужный процесс по строчьно.
+                        {
+                            break;
+                        }
+
+                    }
+
+                }
+
+            }
+            else
+                WrateText("!!Ошибка при чтении файла блеклиста!!!\t\n");
 
         }
 

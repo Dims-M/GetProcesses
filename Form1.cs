@@ -15,6 +15,7 @@ namespace GetProcesses
     {
         private List<Transport> tempListGetProcess{get; set;}
         private static int nomerRow;
+        
 
         public Form1()
         {
@@ -34,17 +35,18 @@ namespace GetProcesses
         {
             Bl bl = new Bl();
             bl.InitDirAndFile(); // создание и папок
-            bl.getCompProcesse(); // получение списка запущеных процессов
-          // bl.CopyLinkAppStartup(true); // программное добавление в автозагрузку
+          //  bl.getCompProcesse(); // получение списка запущеных процессов
+           // bl.CopyLinkAppStartup(true); // программное добавление в автозагрузку
 
-
+            clientTable.DataSource = bl.getCompProcesse();
+            tempListGetProcess = bl.getCompProcesse();
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
             Bl bl = new Bl();
-
             clientTable.DataSource = null;
+
             // dataGridView1.DataSource = transList;
             clientTable.DataSource = bl.getCompProcesse();
             tempListGetProcess = bl.getCompProcesse();
@@ -280,7 +282,7 @@ namespace GetProcesses
         //исключить из "черного списка"
         private void Button6_Click(object sender, EventArgs e)
         {
-
+            Bl bl = new Bl();
             //ArrayList Empty = new ArrayList();
 
             clientTable.DataSource = null;
@@ -296,15 +298,18 @@ namespace GetProcesses
             //  clientTable.ClearSelection(); //
 
             //создаём и добавляем две колонки
-            clientTable.Columns.Add("ID", "Id");
-            clientTable.Columns.Add("Name", "Name");
+            clientTable.Columns.Add("ID", "ID");
+            clientTable.Columns.Add("ProcessName", "ProcessName");
 
             // добавляем строку
             int rowNumber = clientTable.Rows.Add();
 
             //3. Заполняем ячейки
-            clientTable.Rows[rowNumber].Cells["ID"].Value = rowNumber;
-            clientTable.Rows[rowNumber].Cells[1].Value = "Тестттттт";
+            clientTable.Rows[rowNumber].Cells["ID"].Value = rowNumber; // получение айди или нмера списка
+            clientTable.Rows[rowNumber].Cells[1].Value = "Тестттттт"; // имя процесса
+
+            bl.ReaderWhiteList("Microsoft.Photos2"); // отправляем строку с именем процесса который нужно исклучить
+            clientTable.DataSource = null;
         }
     }
 }
