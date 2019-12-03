@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace GetProcesses
@@ -58,8 +59,8 @@ namespace GetProcesses
 
                 for (int i =0; i<= countProcesse; i++)
                 {
-
                     System.Diagnostics.Process.GetProcessesByName(nameProssec)[0].Kill(); //не понятно как решить ошибку индекса
+                    Thread.Sleep(100); // что бы коректно закрывались процессы
                 }
 
                // System.Diagnostics.Process.GetProcessesByName(nameProssec)[0].Kill();
