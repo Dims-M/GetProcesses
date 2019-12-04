@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GetProcesses.ModelForm;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -69,7 +70,8 @@ namespace GetProcesses
             // bl.KillProssec(string ff = dataGridView1.Rows);
             // bl.InitDirAndFile(); // создание временной директории
             // bl.ZipArhivMyPath(@"C:\Users\Dim\Documents\Test\GetProcesses.zip", @"C:\Users\Dim\Documents\Test\");
-            bl.ReadingList();
+            bl.ReaderWhiteList("Microsoft.Photos2"); //DTAgent
+
         }
 
         /// <summary>
@@ -255,7 +257,10 @@ namespace GetProcesses
         private void Button5_Click(object sender, EventArgs e)
         {
             Bl bl = new Bl();
-           //  nomerRow = e.RowIndex; // номер строки. На которой будет целчок мышки
+            //  nomerRow = e.RowIndex; // номер строки. На которой будет целчок мышки
+
+            FormBlacList formBlacList = new FormBlacList();
+            formBlacList.Show();
 
             string nameProcess = "";
             Int32 selectedRowCount =
@@ -303,7 +308,7 @@ namespace GetProcesses
             clientTable.Rows[rowNumber].Cells["ID"].Value = rowNumber; // получение айди или нмера списка
             clientTable.Rows[rowNumber].Cells[1].Value = "Тестттттт"; // имя процесса
 
-            bl.ReaderWhiteList("Microsoft.Photos2"); // отправляем строку с именем процесса который нужно исклучить
+           // bl.ReaderWhiteList("Microsoft.Photos2"); // отправляем строку с именем процесса который нужно исклучить
 
            // clientTable.DataSource = null;
 

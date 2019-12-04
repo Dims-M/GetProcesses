@@ -64,7 +64,7 @@ namespace GetProcesses
                 }
 
                // System.Diagnostics.Process.GetProcessesByName(nameProssec)[0].Kill();
-                WrateTextTemp("Ошибка при закрытии процесса \n", @"Log\MyLogKillProssec.txt");
+                WrateTextTemp("Ошибка при закрытии процесса \n", @"Log\MyLogKillProssec.txt", true);
 
             }
             catch (Exception ex)
@@ -86,7 +86,7 @@ namespace GetProcesses
 
                 //System.Diagnostics.Process.GetProcessesByName(nameProssec)[0].Kill();
 
-                WrateTextTemp($"\n{nameProssec}", @"Log\MyLogKillProssec.txt"); ;
+                WrateTextTemp($"\n{nameProssec}", @"Log\MyLogKillProssec.txt", true); 
             }
             catch (Exception ex)
             {
@@ -121,31 +121,41 @@ namespace GetProcesses
 
         }
 
-
+        /// <summary>
+        /// Чтение файла с процессами для закрытия
+        /// </summary>
+        /// <param name="nameProc"></param>
         public void ReaderWhiteList(string nameProc)
         {
             string tempName = "";
+            string newLogKill = "";
+
             if (File.Exists(@"Log\MyLogKillProssec.txt"))
             {
                 using (StreamReader sw = new StreamReader(@"Log\MyLogKillProssec.txt", System.Text.Encoding.Default))
                 {
                    // tempName = sw.
-                    while ((tempName = sw.ReadLine()) != null)  // построчно.
+                    while ((tempName = sw.ReadLine()) != null)  // построчно. 
                     {
+                       // newLogKill += tempName;
+
                         if (tempName.Contains(nameProc)) // ищем нужный процесс по строчьно.
                         {
                             WrateText("!!Сработал брейк\t\n");
+                           
                             break;
                         }
-
+                        newLogKill += tempName +"\n";
                     }
-
+                  
                 }
-
+            // File.Delete(@"Log\MyLogKillProssec.txt");
+            WrateTextTemp($"\n{newLogKill}", @"Log\MyLogKillProssec.txt", false);
             }
-            else
+            
+            else {
                 WrateText("!!Ошибка при чтении файла блеклиста!!!\t\n");
-
+            }
         }
 
 
@@ -260,7 +270,7 @@ namespace GetProcesses
 
             catch (Exception ex)
             {
-                WrateTextTemp("Произошла ошибка при создании главной директории!!! \n" + ex + "\n", tempPaht);
+                WrateTextTemp("Произошла ошибка при создании главной директории!!! \n" + ex + "\n", tempPaht, true);
             }
 
 
@@ -367,7 +377,7 @@ namespace GetProcesses
         /// запись в текстовой файл. Временное логирования
         /// </summary>
         /// <param name="myText"></param>
-        public void WrateTextTemp(string myText, string myPachDir)
+        public void WrateTextTemp(string myText, string myPachDir, bool zapis)
         {
             DirectoryInfo dirInfo = new DirectoryInfo("\\Log");
 
@@ -380,7 +390,7 @@ namespace GetProcesses
                     // File.Create(myPachDir + @"Log\texLog.txt");
                 }
 
-                 using (StreamWriter sw = new StreamWriter(myPachDir, true, System.Text.Encoding.Default))
+                 using (StreamWriter sw = new StreamWriter(myPachDir, zapis, System.Text.Encoding.Default))
                 //using (StreamWriter sw = new StreamWriter(@"Log\Log.txt", true, System.Text.Encoding.Default))
                 {
                    // sw.WriteLine(DateTime.Now + "\t\n" + myText); // запись
