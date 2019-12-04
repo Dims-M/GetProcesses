@@ -86,7 +86,7 @@ namespace GetProcesses
 
                 //System.Diagnostics.Process.GetProcessesByName(nameProssec)[0].Kill();
 
-                WrateTextTemp($"{nameProssec}", @"Log\MyLogKillProssec.txt"); ;
+                WrateTextTemp($"\n{nameProssec}", @"Log\MyLogKillProssec.txt"); ;
             }
             catch (Exception ex)
             {
@@ -134,6 +134,7 @@ namespace GetProcesses
                     {
                         if (tempName.Contains(nameProc)) // ищем нужный процесс по строчьно.
                         {
+                            WrateText("!!Сработал брейк\t\n");
                             break;
                         }
 

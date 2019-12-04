@@ -44,6 +44,10 @@ namespace GetProcesses
 
         private void Button2_Click(object sender, EventArgs e)
         {
+            //очистить старую форму датагрида c 2 колонками
+            // DeleteColums();
+
+            clientTable.Refresh();
             Bl bl = new Bl();
             clientTable.DataSource = null;
 
@@ -283,20 +287,11 @@ namespace GetProcesses
         private void Button6_Click(object sender, EventArgs e)
         {
             Bl bl = new Bl();
-            //ArrayList Empty = new ArrayList();
+            
 
+            //ПОбавляем 2 новые колонки. Проблемма с переходом на новую форрму.
             clientTable.DataSource = null;
-            //  clientTable.DataSource = new object();
-            // clientTable.DataSource. Clear();
-
-            //int rowsCount = clientTable.Rows.Count;
-            //for (int i = 0; i < rowsCount; i++)
-            //{
-            //    clientTable.Rows.Remove(clientTable.Rows[i]);
-            //}
-
-            //  clientTable.ClearSelection(); //
-
+            
             //создаём и добавляем две колонки
             clientTable.Columns.Add("ID", "ID");
             clientTable.Columns.Add("ProcessName", "ProcessName");
@@ -309,7 +304,16 @@ namespace GetProcesses
             clientTable.Rows[rowNumber].Cells[1].Value = "Тестттттт"; // имя процесса
 
             bl.ReaderWhiteList("Microsoft.Photos2"); // отправляем строку с именем процесса который нужно исклучить
-            clientTable.DataSource = null;
+
+           // clientTable.DataSource = null;
+
+             
+        }
+
+        void DeleteColums()
+        {
+            clientTable.Columns.RemoveAt(0);
+            clientTable.Columns.RemoveAt(1);
         }
     }
 }
