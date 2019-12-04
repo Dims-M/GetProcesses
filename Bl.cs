@@ -129,6 +129,7 @@ namespace GetProcesses
         {
             string tempName = "";
             string newLogKill = "";
+            string[] tempMassLog  = new string[300];
 
             if (File.Exists(@"Log\MyLogKillProssec.txt"))
             {
@@ -137,14 +138,16 @@ namespace GetProcesses
                    // tempName = sw.
                     while ((tempName = sw.ReadLine()) != null)  // построчно. 
                     {
+                     //  tempMassLog
                        // newLogKill += tempName;
 
                         if (tempName.Contains(nameProc)) // ищем нужный процесс по строчьно.
                         {
                             WrateText("!!Сработал брейк\t\n");
                            
-                            break;
+                            continue;
                         }
+                       // tempMassLog[] = tempName;
                         newLogKill += tempName +"\n";
                     }
                   
