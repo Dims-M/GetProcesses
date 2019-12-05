@@ -293,21 +293,23 @@ namespace GetProcesses
         private void Button6_Click(object sender, EventArgs e)
         {
             Bl bl = new Bl();
+
+            FormBlacList formBlacList = new FormBlacList();
+            formBlacList.Show();
+
+            ////ПОбавляем 2 новые колонки. Проблемма с переходом на новую форрму.
+            //clientTable.DataSource = null;
             
+            ////создаём и добавляем две колонки
+            //clientTable.Columns.Add("ID", "ID");
+            //clientTable.Columns.Add("ProcessName", "ProcessName");
 
-            //ПОбавляем 2 новые колонки. Проблемма с переходом на новую форрму.
-            clientTable.DataSource = null;
-            
-            //создаём и добавляем две колонки
-            clientTable.Columns.Add("ID", "ID");
-            clientTable.Columns.Add("ProcessName", "ProcessName");
+            //// добавляем строку
+            //int rowNumber = clientTable.Rows.Add();
 
-            // добавляем строку
-            int rowNumber = clientTable.Rows.Add();
-
-            //3. Заполняем ячейки
-            clientTable.Rows[rowNumber].Cells["ID"].Value = rowNumber; // получение айди или нмера списка
-            clientTable.Rows[rowNumber].Cells[1].Value = "Тестттттт"; // имя процесса
+            ////3. Заполняем ячейки
+            //clientTable.Rows[rowNumber].Cells["ID"].Value = rowNumber; // получение айди или нмера списка
+            //clientTable.Rows[rowNumber].Cells[1].Value = "Тестттттт"; // имя процесса
 
            // bl.ReaderWhiteList("Microsoft.Photos2"); // отправляем строку с именем процесса который нужно исклучить
 

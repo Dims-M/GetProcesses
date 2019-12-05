@@ -27,15 +27,20 @@ namespace GetProcesses.ModelForm
         //при загрузке формы 
         private void FormBlacList_Load(object sender, EventArgs e)
         {
+            Bl bl = new Bl();
             string nameProcess = "";
 
-            //загрузка данных в датгрид 
+            ////создаём и добавляем две колонки
+            blacListTable.Columns.Add("ID", "ID");
+            blacListTable.Columns.Add("ProcessName", "ProcessName");
 
+            //загрузка данных в датгрид 
+            blacListTable.DataSource = bl.ReadBlackList(); // получаем данные из текст файла
 
             Int32 selectedRowCount =
             blacListTable.Rows.GetRowCount(DataGridViewElementStates.Selected); // выбор строки в дате грид
 
-            nameProcess = blacListTable.Rows[nomerRow].Cells["ProcessName"].Value.ToString();
+           // nameProcess = blacListTable.Rows[nomerRow].Cells["ProcessName"].Value.ToString();
         }
 
 

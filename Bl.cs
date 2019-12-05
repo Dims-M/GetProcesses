@@ -50,25 +50,38 @@ namespace GetProcesses
             return transList;
         }
 
-
-        public void ReadBlackList()
+        /// <summary>
+        /// Медо чтения их тех. файла в лист
+        /// </summary>
+        public List<Transport> ReadBlackList()
         {
-            List<string> lines = new List<string>();
+            //str = System.Text.RegularExpressions.Regex.Replace(str, @"\s+", " ")
+
+            List<Transport> lines = new List<Transport>();
             FileStream file = new FileStream(@"Log//MyLogKillProssec.txt", FileMode.Open);
+            Transport transport; //
+            int chet = 0;
             using (StreamReader readFile = new StreamReader(file, Encoding.UTF8)) 
             {
                 string temp = string.Empty; // инциализация пустой строки
 
                 while (readFile.Peek() != -1)
                 {
-                    temp = readFile.ReadLine();
-                    if (temp == "flag")
-                        continue;
-                    else
-                        lines.Add(temp);
+
+                    transport = new Transport(chet.ToString(), temp , "");
+
+                    lines.Add(transport);
+                    //temp = readFile.ReadLine();
+                    ////if (temp == "flag")
+                    ////    continue;
+                    ////else
+                    //    lines.Add(temp);
+                    chet++;
                 }
             }
             file.Close();
+
+            return lines;
         }
          
         
@@ -108,9 +121,9 @@ namespace GetProcesses
             {
                 MessageBox.Show($"Процесс {nameProssec} будет добавлен в список закрываемых  при запуске программы процессов");
 
-                //System.Diagnostics.Process.GetProcessesByName(nameProssec)[0].Kill();
+                System.Diagnostics.Process.GetProcessesByName(nameProssec)[0].Kill();
 
-                WrateTextTemp($"\n{nameProssec}", @"Log\MyLogKillProssec.txt", true); 
+               // WrateTextTemp($"\n{nameProssec}", @"Log\MyLogKillProssec.txt", true); 
             }
             catch (Exception ex)
             {
@@ -151,6 +164,7 @@ namespace GetProcesses
         /// <param name="nameProc"></param>
         public void ReaderWhiteList(string nameProc)
         {
+            //str = System.Text.RegularExpressions.Regex.Replace(str, @"\s+", " ")
             string tempName = "";
             string newLogKill = "";
             string[] tempMassLog  = new string[300];
@@ -171,8 +185,9 @@ namespace GetProcesses
                            
                             continue;
                         }
-                       // tempMassLog[] = tempName;
-                        newLogKill += tempName +"\n";
+                        // tempMassLog[] = tempName;
+                        newLogKill += System.Text.RegularExpressions.Regex.Replace(tempName, @"\s+", " ");
+                        newLogKill += "\n";
                     }
                   
                 }
