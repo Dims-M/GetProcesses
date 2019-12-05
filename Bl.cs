@@ -58,6 +58,12 @@ namespace GetProcesses
             //str = System.Text.RegularExpressions.Regex.Replace(str, @"\s+", " ")
 
             List<Transport> lines = new List<Transport>();
+            FileInfo fileInfo = new FileInfo(@"Log//MyLogKillProssec.txt");
+           
+            if (!fileInfo.Exists)
+            {
+                fileInfo.Create();
+            }
             FileStream file = new FileStream(@"Log//MyLogKillProssec.txt", FileMode.Open);
             Transport transport; //
             int chet = 0;
@@ -281,40 +287,40 @@ namespace GetProcesses
             string tempPahtFile = Application.StartupPath; // путь запуска текущего приложения. Application.StartupPath
             string tempPathDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Test\GetProcesses";
 
-            DirectoryInfo dirInfo = new DirectoryInfo(@"\\Log");
-            FileInfo fileInfo = new FileInfo(@"Log//MyLogKillProssec.txt");
+            DirectoryInfo dirInfo = new DirectoryInfo(@"Log");
+            FileInfo fileInfo = new FileInfo(@"Log\MyLogKillProssec.txt");
             
             try
             {
                 if (!dirInfo.Exists)
                 {
                     dirInfo.Create();// создание кaтолога
-                    Directory.CreateDirectory("Log"); //создание папки лога
-
-                    if (!fileInfo.Exists)
-                    {
-                        File.Create(@"Log//MyLogKillProssec.txt");
-                    }
-
+                   // Directory.CreateDirectory("Log"); //создание папки лога
                 }
 
+                if (!fileInfo.Exists)
+                {
+                    fileInfo.Create();
+                }
+                 #region Gecjw
                 //Проверка откуда была запущена программа!!!
-               //if (tempPaht.Equals(tempPathDir) )
-               // {
-               //     MessageBox.Show("[ezct");
-               //     WrateTextTemp($"Временный лог.\t\n Текущая версия программы запущена из = {tempPahtFile} А должна быть из {tempPathDir}", tempPaht + "\\");
-               //     //GetFailSite();
-               // }
+                //if (tempPaht.Equals(tempPathDir) )
+                // {
+                //     MessageBox.Show("[ezct");
+                //     WrateTextTemp($"Временный лог.\t\n Текущая версия программы запущена из = {tempPahtFile} А должна быть из {tempPathDir}", tempPaht + "\\");
+                //     //GetFailSite();
+                // }
 
-               // else
-               // {
+                // else
+                // {
 
-               // WrateTextTemp($"Временный лог.\t\n Текущая версия программы запущена из = {tempPaht} А не из установочной пaпки{tempPathDir}", tempPaht + "\\");
-               // GetFailSite(); //получение новой версии файла Работает
-               // MessageBox.Show("Скачивание и копирование завершено!!!");
-               // // CopyLinkAppStartup(true);//запись в автозагрузку
+                // WrateTextTemp($"Временный лог.\t\n Текущая версия программы запущена из = {tempPaht} А не из установочной пaпки{tempPathDir}", tempPaht + "\\");
+                // GetFailSite(); //получение новой версии файла Работает
+                // MessageBox.Show("Скачивание и копирование завершено!!!");
+                // // CopyLinkAppStartup(true);//запись в автозагрузку
 
-               // }
+                // }
+                #endregion
             }
 
             catch (Exception ex)
