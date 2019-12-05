@@ -50,12 +50,36 @@ namespace GetProcesses
             return transList;
         }
 
+
+        public void ReadBlackList()
+        {
+            List<string> lines = new List<string>();
+            FileStream file = new FileStream(@"Log//MyLogKillProssec.txt", FileMode.Open);
+            using (StreamReader readFile = new StreamReader(file, Encoding.UTF8)) 
+            {
+                string temp = string.Empty; // инциализация пустой строки
+
+                while (readFile.Peek() != -1)
+                {
+                    temp = readFile.ReadLine();
+                    if (temp == "flag")
+                        continue;
+                    else
+                        lines.Add(temp);
+                }
+            }
+            file.Close();
+        }
+         
+        
+
+
         //закрыть нужны процесс по имени.
         public void KillProssec(string nameProssec)
         {
             try
             {
-                MessageBox.Show($"Процесс {nameProssec} будет закрыт") ;
+               // MessageBox.Show($"Процесс {nameProssec} будет закрыт") ;
 
                 for (int i =0; i<= countProcesse; i++)
                 {
@@ -160,6 +184,7 @@ namespace GetProcesses
                 WrateText("!!Ошибка при чтении файла блеклиста!!!\t\n");
             }
         }
+
 
 
         /// <summary>

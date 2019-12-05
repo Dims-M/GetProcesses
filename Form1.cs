@@ -66,6 +66,7 @@ namespace GetProcesses
             Bl bl = new Bl();
             //  bl.InitDirAndFile();
             //  bl.DeleteMyFail();
+            bl.ReadingList(); //чтение файла и закрытие процессов из списка
             // bl.GetFailSite(); //загрузка с файла
             // bl.KillProssec(string ff = dataGridView1.Rows);
             // bl.InitDirAndFile(); // создание временной директории

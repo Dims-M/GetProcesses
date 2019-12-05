@@ -28,6 +28,10 @@ namespace GetProcesses.ModelForm
         private void FormBlacList_Load(object sender, EventArgs e)
         {
             string nameProcess = "";
+
+            //загрузка данных в датгрид 
+
+
             Int32 selectedRowCount =
             blacListTable.Rows.GetRowCount(DataGridViewElementStates.Selected); // выбор строки в дате грид
 
