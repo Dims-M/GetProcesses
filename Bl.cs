@@ -281,7 +281,8 @@ namespace GetProcesses
             string tempPahtFile = Application.StartupPath; // путь запуска текущего приложения. Application.StartupPath
             string tempPathDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Test\GetProcesses";
 
-            DirectoryInfo dirInfo = new DirectoryInfo(@"\Log");
+            DirectoryInfo dirInfo = new DirectoryInfo(@"\\Log");
+            FileInfo fileInfo = new FileInfo(@"Log//MyLogKillProssec.txt");
             
             try
             {
@@ -289,7 +290,12 @@ namespace GetProcesses
                 {
                     dirInfo.Create();// создание кaтолога
                     Directory.CreateDirectory("Log"); //создание папки лога
-                   // File.Create(myPachDir + @"Log\texLog.txt");
+
+                    if (!fileInfo.Exists)
+                    {
+                        File.Create(@"Log//MyLogKillProssec.txt");
+                    }
+
                 }
 
                 //Проверка откуда была запущена программа!!!
