@@ -65,5 +65,12 @@ namespace GetProcesses.ModelForm
             // MessageBox.Show($"Номер строки { indexRowCell}");
             label2.Text = "Номер строки " + indexRowCell;
         }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            Bl bl = new Bl();
+            bl.testList();
+
+        }
     }
 }

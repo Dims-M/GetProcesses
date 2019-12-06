@@ -331,6 +331,52 @@ namespace GetProcesses
 
         }
 
+        //************
+       // Тестовые методы
+
+            public void testList()
+        {
+            DirectoryInfo dirInfo = new DirectoryInfo("\\Log");
+            var ttempList = getCompProcesse();
+            string tempName="";
+
+            try
+            {
+                if (!dirInfo.Exists)
+                {
+                    dirInfo.Create();// создание кaтолога
+                    
+                }
+
+                using (StreamWriter sw = new StreamWriter(@"Log\testTempList.txt", true, System.Text.Encoding.Default))
+               
+                {
+                    foreach (var teee in ttempList)
+                    {
+                        tempName += teee.ProcessName;
+                        tempName += " ";
+                        tempName += DateTime.Today.ToString();// Now.ToString();
+                        tempName += "\n";
+
+                    }
+                        
+                    sw.WriteLine(tempName); // запись
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+
+        }
+
+       //*************
+
+
+
 
         /// <summary>
         /// Получение новой версии файла ссайта 000webhostapp.com
