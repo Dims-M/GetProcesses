@@ -292,7 +292,7 @@ namespace GetProcesses
         //исключить из "черного списка"
         private void Button6_Click(object sender, EventArgs e)
         {
-            Bl bl = new Bl();
+           // Bl bl = new Bl();
 
             FormBlacList formBlacList = new FormBlacList();
             formBlacList.Show();
@@ -322,6 +322,26 @@ namespace GetProcesses
         {
             clientTable.Columns.RemoveAt(0);
             clientTable.Columns.RemoveAt(1);
+        }
+
+
+        private void Button7_Click(object sender, EventArgs e)
+        {
+            Bl bl = new Bl();
+
+            int indexRowCell = clientTable.SelectedCells[0].RowIndex; // получаем индекс выделеной строки 
+
+           // MessageBox.Show($"Номер строки { indexRowCell}");
+            label4.Text = "Номер строки "+ indexRowCell;
+
+           // bl.KillProssec(indexRowCell);
+            label4.Text += "Был остановлен процесс ";
+
+        }
+
+        private void Label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
